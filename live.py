@@ -39,7 +39,7 @@ def main():
 if __name__ == "__main__":
     main()
 
-    image_grayscale("sample.jpg") 
+    #image_grayscale("sample.jpg") 
     print("이미지 변환 성공")
 
-    folder_grayscale("images")
+    #folder_grayscale("images")
