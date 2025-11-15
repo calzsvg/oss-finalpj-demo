@@ -1,5 +1,7 @@
 import cv2
-from vidstream_grayscale.preprocessor import vidgrayscaling
+from vidstream_grayscale.preprocessor import (vidgrayscaling,
+                                              image_grayscale,
+                                              folder_grayscale)
 
 
 def main():
@@ -7,6 +9,8 @@ def main():
     if not cap.isOpened():
         print("오류-웹캠")
         return
+    
+    is_gray = False
 
     while True:
         ret, frame = cap.read()
@@ -14,12 +18,19 @@ def main():
             print("오류")
             break
 
-        gray = vidgrayscaling(frame)
+        if is_gray:
+            display = vidgrayscaling(frame)
+        else:
+            display = frame
 
-        cv2.imshow("GRAY TEST", gray)
+        cv2.imshow("GRAY TEST", display)
 
-        if cv2.waitKey(1) & 0xFF == ord('q'):
+        key = cv2.waitKey(1) & 0xff
+
+        if key == ord('q'):
             break
+        elif key == ord('c'):
+            is_gray = not is_gray
 
     cap.release()
     cv2.destroyAllWindows()
@@ -28,10 +39,7 @@ def main():
 if __name__ == "__main__":
     main()
 
-from vidstream_grayscale.preprocessor import image_grayscale
-image_grayscale("sample.jpg") 
-print("이미지 변환 성공")
+    image_grayscale("sample.jpg") 
+    print("이미지 변환 성공")
 
-from vidstream_grayscale.preprocessor import folder_grayscale
-
-folder_grayscale("images")
+    folder_grayscale("images")
