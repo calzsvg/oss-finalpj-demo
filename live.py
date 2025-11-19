@@ -7,7 +7,7 @@ from vidstream_grayscale.preprocessor import (vidgrayscaling,
 def main():
     cap = cv2.VideoCapture(0) 
     if not cap.isOpened():
-        print("오류-웹캠")
+        print("웹캠에서 오류가 발생했습니다.")
         return
     
     is_gray = False
@@ -15,7 +15,7 @@ def main():
     while True:
         ret, frame = cap.read()
         if not ret:
-            print("오류")
+            print("오류가 발생했습니다.")
             break
 
         if is_gray:
@@ -39,7 +39,7 @@ def main():
 if __name__ == "__main__":
     main()
 
-    image_grayscale("sample.jpg") 
-    print("이미지 변환 성공")
+    #image_grayscale("sample.jpg") 
+    print("이미지 변환에 성공하였습니다!")
 
-    folder_grayscale("images")
+    #folder_grayscale("images")
