@@ -1,7 +1,5 @@
 import cv2
-from vidstream_grayscale.preprocessor import (vidgrayscaling,
-                                              image_grayscale,
-                                              folder_grayscale)
+from grayscale.preprocessor import (grayscale_frame, grayscale_image, grayscale_folder, resize_image, resize_folder, is_gray, remove_background, remove_background_img)
 
 
 def main():
@@ -19,7 +17,7 @@ def main():
             break
 
         if is_gray:
-            display = vidgrayscaling(frame)
+            display = grayscale_frame(frame)
         else:
             display = frame
 
@@ -42,4 +40,3 @@ if __name__ == "__main__":
     #image_grayscale("sample.jpg") 
     print("이미지 변환에 성공하였습니다!")
 
-    #folder_grayscale("images")

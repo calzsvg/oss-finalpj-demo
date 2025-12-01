@@ -5,7 +5,7 @@ import cv2
 import discord
 from dotenv import load_dotenv
 
-from vidstream_grayscale.preprocessor import vidgrayscaling
+from grayscale.preprocessor import grayscale_image
 
 load_dotenv()
 DI_TOKEN = os.getenv("DISCORD_TOKEN")
@@ -28,7 +28,7 @@ def to_gray_image(input_path: str, output_path: str):
         new_h = int(h * scale)
         img = cv2.resize(img, (max_width, new_h), interpolation=cv2.INTER_AREA)
 
-    gray = vidgrayscaling(img)
+    gray = grayscale_image(img)
 
     cv2.imwrite(output_path, gray, [int(cv2.IMWRITE_JPEG_QUALITY), 90])
 
